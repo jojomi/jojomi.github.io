@@ -1,0 +1,25 @@
+body {
+	font-family: Muli, sans-serif;
+}
+
+footer {
+	font-style: italic;
+}
+
+label {
+	font-weight: bold;
+}
+
+input[type="text"], input[type="text"]:focus {
+	outline: none;
+	border: none;
+	border-bottom: 1px solid black;
+}
+
+.explanation {
+	font-size: 75%;
+}
+
+.explanation.hidden {
+	display: none;
+}

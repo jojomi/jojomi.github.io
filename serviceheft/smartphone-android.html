@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Serviceheft Smartphone (Android)</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/icon.png" />
+		<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="wrapper">
+			<header><h1>Serviceheft Smartphone</h1></header>
+			<main>
+				<h2>Grunddaten</h2>
+				<div class="form-elem">
+					<label for="owner">Besitzer:</label>
+					<input type="text" id="owner" placeholder="" size="25">
+				</div>
+
+				<div class="form-elem">
+					<label for="bought">Kaufdatum:</label>
+					<input type="text" id="bought" placeholder="" size="10">
+					<div class="explanation">Ab Kauf gelten mindestens <b>2 Jahre Gewährleistung</b> vom <b>Händler</b>, davon 6 Monate mit Beweislast beim Händler. <b>Zusätzlich</b> können <b>Garantie</b>leistungen des <b>Herstellers</b> ab diesem Datum laufen.</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="manufacturer">Hersteller:</label>
+					<input type="text" id="manufacturer" placeholder="" size="15">
+					<div class="explanation">Der Herstellername findet sich oft auf der Geräterückseite oder an der Oberkante auf der Vorderseite.</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="model">Modell:</label>
+					<input type="text" id="model" placeholder="" size="20">
+					<div class="explanation">Der Modellname ist häufig auf die Geräterückseite gedruckt. Alternativ in der App "Einstellungen" unter "Über das Telefon", "Modellnummer".</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="serialnumber">Seriennummer:</label>
+					<input type="text" id="serialnumber" placeholder="" size="30">
+					<div class="explanation">Die Seriennummer des Gerätes ist oftmals auf der Rückseite vermerkt (hinter "S/N"). Sie kann auch aus der Rechnung oder aus dem Lieferschein hervorgehen.</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="gmail">Google-Mail-Adresse:</label>
+					<input type="text" id="gmail" placeholder="" size="30">,
+					<label for="gmail-pass">Passwort:</label>
+					<input type="text" id="gmail-pass" placeholder="" size="30">
+					<div class="explanation">Die Google-Mail-Adresse ist für viele Gerätedienste wichtig.</div>
+				</div>
+
+				<!-- Codename -->
+
+
+				<h2>Hardware</h2>
+
+				<div class="form-elem">
+					<input type="checkbox" id="dualsim" value="dualsim">
+					<label for="dualsim">Dualsim</label>
+					<div class="explanation">DualSim-fähige Geräte können zwei SIM-Karten gleichzeitig verwenden. Falls du davon noch nicht gehört hast, hat dein Handy diese Fähigkeit höchstwahrscheinlich nicht.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="accu" value="dualsim">
+					<label for="accu">Akku austauschbar</label>
+					<div class="explanation">Lässt sich die Rückseite des Handys mit leichtem und vorsichtigem Hebeln öffnen und ist das Akku danach ohne Werkzeug entnehmbar, dann kann der Akku später einzeln ausgetauscht werden.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="sd-card" value="dualsim">
+					<label for="sd-card">zusätzliche SD-Karte möglich</label>
+					<div class="explanation">Ein SD-Karten-Slot ermöglicht es seitlich oder unter dem Gerätedeckel auf der Rückseite eine SD-Karte als Speichererweiterung einzuschieben.</div>
+				</div>
+
+
+
+				<h2>Betriebssystem</h2>
+
+				<div class="form-elem">
+					<label for="os">Plattform:</label>
+					<input type="text" id="os" value="Android" size="7" disabled="disabled">
+				</div>
+
+				<div class="form-elem">
+					<label for="version">Android-Version:</label>
+					<input type="text" id="version" placeholder="" size="5">
+					<div class="explanation">Zu finden in der App "Einstellungen" unter "Über das Telefon", "Android-Version".</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="security-level">Sicherheitspatch-Ebene:</label>
+					<input type="text" id="security-level" placeholder="" size="20">
+					<div class="explanation">Zu finden in der App "Einstellungen" unter "Über das Telefon", "Android-Sicherheitspatch-Ebene".</div>
+				</div>
+
+
+				<h2>Diebstahlschutz</h2>
+
+				<div class="form-elem">
+					<label for="imei1">IMEI-Nummer SIM-Karte 1:</label>
+					<input type="text" id="imei1" placeholder="" size="15" pattern="[0-9]{15}">
+					<div class="explanation">Ein Anruf (!) an die "Nummer" <b>*#06#</b> zeigt diese Nummer an. Sie lautet z.B. 353843070511544. Diese Nummer benötigt die Polizei bei einer Diebstahlanzeige. <a href="https://de.wikipedia.org/wiki/International_Mobile_Equipment_Identity">Hintergrund</a></div>
+				</div>
+
+				<div class="form-elem">
+					<label for="pin1">PIN SIM-Karte 1:</label>
+					<input type="text" id="pin1" placeholder="" size="8" pattern="[0-9]{4,8}">,
+					<label for="puk1">PUK SIM-Karte 1:</label>
+					<input type="text" id="puk1" placeholder="" size="12" pattern="[0-9]*">
+
+					<div class="explanation">Die PIN- und PUK-Nummern kannst du deinen Vertragsunterlagen entnehmen. Die PIN kann geändert werden ("Einstellungen", "Sicherheit", "SIM-Sperre einrichten", "PIN ändern").</div>
+				</div>
+
+				<div class="form-elem">
+					<label for="imei2">IMEI-Nummer SIM-Karte 2:</label>
+					<input type="text" id="imei2" placeholder="" size="15" pattern="[0-9]{15}">
+					<div class="explanation">Ein Anruf (!) an die "Nummer" <b>*#06#</b> zeigt diese Nummer an. Sie lautet z.B. 353843070511544. Diese Nummer existiert nur, wenn das Gerät DualSim-fähig ist. <a href="https://de.wikipedia.org/wiki/International_Mobile_Equipment_Identity">Hintergrund</a></div>
+				</div>
+
+				<div class="form-elem">
+					<label for="pin2">PIN SIM-Karte 2:</label>
+					<input type="text" id="pin2" placeholder="" size="8" pattern="[0-9]{4,8}">,
+					<label for="puk2">PUK SIM-Karte 2:</label>
+					<input type="text" id="puk2" placeholder="" size="12" pattern="[0-9]*">
+				</div>
+
+
+				<h2>Konfiguration</h2>
+
+				<div class="form-elem">
+					<input type="checkbox" id="photo-backup" value="photo-backup">
+					<label for="photo-backup">automatisches Foto-Backup</label>
+					<div class="explanation">Aufgenommene Bilder müssen spätestens bei der nächsten WLAN-Verbindung online gebackuppt werden. Möglichkeiten: Amazon Prime Photos, Google Photos, Dropbox, Nextcloud/OwnCloud.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="emails-imap" value="emails-imap">
+					<label for="emails-imap">E-Mails über IMAP</label>
+					<div class="explanation">E-Mails müssen über IMAP empfangen werden.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="threema-id" value="threema-id">
+					<label for="threema-id">Threema-ID</label>,
+					<label for="threema-pass">Passwort:</label>
+					<input type="text" id="threema-pass" placeholder="" size="15">
+					<div class="explanation">Die Threema-ID muss außerhalb des Geräts gespeichert werden, am besten per E-Mail (auch an den besten Freund/Freundin) verschickt. Passwort hier notieren.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="whatsapp" value="whatsapp">
+					<label for="whatsapp">automatisches Backup Whatsapp</label>
+					<div class="explanation">Whatsapp kann seine Daten regelmäßig in Google Drive speichern. Dieses Feature sollte aktiviert werden.</div>
+				</div>
+
+				<div class="form-elem">
+					<input type="checkbox" id="sdcard-save" value="sdcard-save">
+					<label for="sdcard-save">möglichst viel auf SD-Karte speichern</label>
+					<div class="explanation">Apps auslagern soweit möglich, außerdem beispielsweise Kartenmaterial, eventuell Bilder aus der Kamera-App. Nur möglich, wenn SD-Karte eingelegt werden kann.</div>
+				</div>
+
+
+
+				<h2>Software</h2>
+
+				<div class="form-elem">
+					<input type="checkbox" id="gerätemanager" value="gerätemanager">
+					<label for="gerätemanager">Gerätemanager (auch konfiguriert für Fernlöschung)</label>
+					<div class="explanation">Mit dem Gerätemanager kann das Gerät klingen, auch wenn es leise gestellt ist. Außerdem kann im Verlust-Fall das Handy ferngelöscht werden (muss vorher konfiguriert werden!).</div>
+				</div>
+
+				Aktueller Browser
+
+				Verschlüsselung aktivieren
+
+				Passwort-Management (Facebook, GMail usw.)
+
+
+				<h2>Service-Termine</h2>
+
+				Update Android, Play-Store-Updates, Backup Threema Daten
+
+				Datum, Arbeiten, nächster Termin
+
+
+			</main>
+			<footer>Eigenes Serviceheft kostenlos? <a href="https://jojomi.github.io/serviceheft" target="_blank">https://jojomi.github.io/serviceheft</a></footer>
+		</div>
+	</body>
+</html>
