@@ -10,11 +10,19 @@
 		<link rel="apple-touch-icon" href="/icon.png" />
 		<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="js/sisyphus.min.js"></script>
+
+		<script>
+			$('form').sisyphus();
+		</script>
 	</head>
-	<body>
+	<body class="print">
 		<div class="wrapper">
 			<header><h1>Serviceheft Smartphone</h1></header>
 			<main>
+				<form>
 				<h2>Grunddaten</h2>
 				<div class="form-elem">
 					<label for="owner">Besitzer:</label>
@@ -23,7 +31,9 @@
 
 				<div class="form-elem">
 					<label for="bought">Kaufdatum:</label>
-					<input type="text" id="bought" placeholder="" size="10">
+					<input type="text" id="bought" placeholder="" size="10">,
+					<label for="dealer">Händler:</label>
+					<input type="text" id="dealer" placeholder="" size="20">
 					<div class="explanation">Ab Kauf gelten mindestens <b>2 Jahre Gewährleistung</b> vom <b>Händler</b>, davon 6 Monate mit Beweislast beim Händler. <b>Zusätzlich</b> können <b>Garantie</b>leistungen des <b>Herstellers</b> ab diesem Datum laufen.</div>
 				</div>
 
@@ -164,6 +174,12 @@
 				</div>
 
 
+				<h2>Synchronisation</h2>
+
+				E-Mails
+				Kontakte
+
+
 
 				<h2>Software</h2>
 
@@ -173,7 +189,12 @@
 					<div class="explanation">Mit dem Gerätemanager kann das Gerät klingen, auch wenn es leise gestellt ist. Außerdem kann im Verlust-Fall das Handy ferngelöscht werden (muss vorher konfiguriert werden!).</div>
 				</div>
 
-				Aktueller Browser
+				<div class="form-elem">
+					<input type="checkbox" id="browser" value="browser">
+					<label for="browser">Aktueller Browser</label>
+					<div class="explanation">Chrome muss installiert sein (manuell im PlayStore gewählt), zusätzlich Firefox, Opera (gut bei schlechter Datenverbindung) o.ä.</div>
+				</div>
+
 
 				Verschlüsselung aktivieren
 
@@ -187,6 +208,7 @@
 				Datum, Arbeiten, nächster Termin
 
 
+			</form>
 			</main>
 			<footer>Eigenes Serviceheft kostenlos? <a href="https://jojomi.github.io/serviceheft" target="_blank">https://jojomi.github.io/serviceheft</a></footer>
 		</div>
