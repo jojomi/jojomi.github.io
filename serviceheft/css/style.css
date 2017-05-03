@@ -6,9 +6,17 @@ footer {
 	font-style: italic;
 }
 
-label {
+label, .label {
 	color: #466596;
 	font-weight: bold;
+}
+
+label.sub {
+	font-weight: normal;
+}
+
+label.margin {
+	margin-right: 2em;
 }
 
 input[type="text"], input[type="text"]:focus {
@@ -18,7 +26,13 @@ input[type="text"], input[type="text"]:focus {
 	font-size: 110%;
 	font-weight: bold;
 	padding-left: .2em;
+	padding-right: .2em;
 	color: #031b3f;
+	margin-right: 2em;
+}
+
+input.center {
+	text-align: center;
 }
 
 .form-elem {
@@ -29,12 +43,52 @@ input[type="text"], input[type="text"]:focus {
 	font-size: 75%;
 }
 
-.print .explanations {
-	display: none;
+header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	background: #031b3f;
+}
+
+header li a {
+	color: white;
+	text-decoration: none;
+}
+
+
+table#service {
+	width: 100%;
+}
+
+
+table#service tr th {
+	background-color: lightgray;
+}
+
+table#service tr td {
+	min-height: 2em;
+}
+
+table#service tbody tr:nth-child(odd) {
+   background-color: #eee;
+	 -webkit-print-color-adjust: exact;
+}
+
+@media all {
+	.page-break	{ display: none; }
 }
 
 @media print {
-	.explanation {
+	header, .explanation {
 		display: none;
+	}
+
+	input[type="text"] {
+		border-bottom: none;
+	}
+
+	.page-break {
+		display: block;
+		page-break-before: always;
 	}
 }

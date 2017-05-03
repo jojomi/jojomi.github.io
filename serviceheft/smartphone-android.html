@@ -11,18 +11,32 @@
 		<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="js/sisyphus.min.js"></script>
 
 		<script>
+		$(function() {
 			$('form').sisyphus();
+
+			$('#reset').click(function() {
+				if (confirm("Sicher?")) {
+					document.getElementById('mainform').reset();
+				}
+			});
+		});
 		</script>
 	</head>
-	<body class="print">
+	<body>
 		<div class="wrapper">
-			<header><h1>Serviceheft Smartphone</h1></header>
+			<form id="mainform">
+			<header>
+				<ul>
+					<li><a href="javascript:window.print();">Drucken</a></li>
+					<li><a href="#" id="reset">Alles zurücksetzen</a></li>
+				</ul>
+			</header>
 			<main>
-				<form>
+				<h1>Serviceheft Smartphone</h1>
 				<h2>Grunddaten</h2>
 				<div class="form-elem">
 					<label for="owner">Besitzer:</label>
@@ -31,7 +45,7 @@
 
 				<div class="form-elem">
 					<label for="bought">Kaufdatum:</label>
-					<input type="text" id="bought" placeholder="" size="10">,
+					<input type="text" id="bought" placeholder="" size="10">
 					<label for="dealer">Händler:</label>
 					<input type="text" id="dealer" placeholder="" size="20">
 					<div class="explanation">Ab Kauf gelten mindestens <b>2 Jahre Gewährleistung</b> vom <b>Händler</b>, davon 6 Monate mit Beweislast beim Händler. <b>Zusätzlich</b> können <b>Garantie</b>leistungen des <b>Herstellers</b> ab diesem Datum laufen.</div>
@@ -46,6 +60,8 @@
 				<div class="form-elem">
 					<label for="model">Modell:</label>
 					<input type="text" id="model" placeholder="" size="20">
+					<label for="color">Farbe:</label>
+					<input type="text" id="color" placeholder="" size="20">
 					<div class="explanation">Der Modellname ist häufig auf die Geräterückseite gedruckt. Alternativ in der App "Einstellungen" unter "Über das Telefon", "Modellnummer".</div>
 				</div>
 
@@ -57,9 +73,9 @@
 
 				<div class="form-elem">
 					<label for="gmail">Google-Mail-Adresse:</label>
-					<input type="text" id="gmail" placeholder="" size="30">,
+					<input type="text" id="gmail" placeholder="" size="20"><br>
 					<label for="gmail-pass">Passwort:</label>
-					<input type="text" id="gmail-pass" placeholder="" size="30">
+					<input type="text" id="gmail-pass" placeholder="" size="15">
 					<div class="explanation">Die Google-Mail-Adresse ist für viele Gerätedienste wichtig.</div>
 				</div>
 
@@ -70,8 +86,8 @@
 
 				<div class="form-elem">
 					<input type="checkbox" id="dualsim" value="dualsim">
-					<label for="dualsim">Dualsim</label>
-					<div class="explanation">DualSim-fähige Geräte können zwei SIM-Karten gleichzeitig verwenden. Falls du davon noch nicht gehört hast, hat dein Handy diese Fähigkeit höchstwahrscheinlich nicht.</div>
+					<label for="dualsim">Dual-SIM</label>
+					<div class="explanation">Dual-SIM-fähige Geräte können zwei SIM-Karten gleichzeitig verwenden. Falls du davon noch nicht gehört hast, hat dein Handy diese Fähigkeit höchstwahrscheinlich nicht.</div>
 				</div>
 
 				<div class="form-elem">
@@ -92,12 +108,12 @@
 
 				<div class="form-elem">
 					<label for="os">Plattform:</label>
-					<input type="text" id="os" value="Android" size="7" disabled="disabled">
+					<input type="text" id="os" class="center" value="Android" size="7" disabled="disabled">
 				</div>
 
 				<div class="form-elem">
 					<label for="version">Android-Version:</label>
-					<input type="text" id="version" placeholder="" size="5">
+					<input type="text" id="version" class="center" placeholder="" size="5">
 					<div class="explanation">Zu finden in der App "Einstellungen" unter "Über das Telefon", "Android-Version".</div>
 				</div>
 
@@ -111,60 +127,83 @@
 				<h2>Diebstahlschutz</h2>
 
 				<div class="form-elem">
-					<label for="imei1">IMEI-Nummer SIM-Karte 1:</label>
+					<label for="imei1">IMEI-Nummer SIM-Kartenslot 1:</label>
 					<input type="text" id="imei1" placeholder="" size="15" pattern="[0-9]{15}">
 					<div class="explanation">Ein Anruf (!) an die "Nummer" <b>*#06#</b> zeigt diese Nummer an. Sie lautet z.B. 353843070511544. Diese Nummer benötigt die Polizei bei einer Diebstahlanzeige. <a href="https://de.wikipedia.org/wiki/International_Mobile_Equipment_Identity">Hintergrund</a></div>
 				</div>
 
 				<div class="form-elem">
-					<label for="pin1">PIN SIM-Karte 1:</label>
-					<input type="text" id="pin1" placeholder="" size="8" pattern="[0-9]{4,8}">,
-					<label for="puk1">PUK SIM-Karte 1:</label>
+					<span class="label">SIM-Karte 1</span> –
+					<label class="sub" for="pin1original">PIN Original:</label>
+					<input type="text" id="pin1original" placeholder="" size="8" pattern="[0-9]{4,8}">
+					<label class="sub" for="pin1">PIN:</label>
+					<input type="text" id="pin1" placeholder="" size="8" pattern="[0-9]{4,8}"><br>
+					<label class="sub" for="puk1">PUK:</label>
 					<input type="text" id="puk1" placeholder="" size="12" pattern="[0-9]*">
+					<label class="sub" for="simno1">Kartennummer:</label>
+					<input type="text" id="simno1" placeholder="" size="16" pattern="[0-9]+">
 
-					<div class="explanation">Die PIN- und PUK-Nummern kannst du deinen Vertragsunterlagen entnehmen. Die PIN kann geändert werden ("Einstellungen", "Sicherheit", "SIM-Sperre einrichten", "PIN ändern").</div>
+					<div class="explanation">Die PIN- und PUK- und Kartennummer der SIM-Karte kannst du deinen Vertragsunterlagen entnehmen. Die PUK heißt gelegentlich auch Super-PIN. Die PIN kann geändert werden ("Einstellungen", "Sicherheit", "SIM-Sperre einrichten", "PIN ändern"). Empfehlung PIN auf Wert des Entsperrcodes ändern und mehr als 4 Stellen nutzen.</div>
 				</div>
 
 				<div class="form-elem">
-					<label for="imei2">IMEI-Nummer SIM-Karte 2:</label>
+					<label for="imei2">IMEI-Nummer SIM-Kartenslot 2:</label>
 					<input type="text" id="imei2" placeholder="" size="15" pattern="[0-9]{15}">
 					<div class="explanation">Ein Anruf (!) an die "Nummer" <b>*#06#</b> zeigt diese Nummer an. Sie lautet z.B. 353843070511544. Diese Nummer existiert nur, wenn das Gerät DualSim-fähig ist. <a href="https://de.wikipedia.org/wiki/International_Mobile_Equipment_Identity">Hintergrund</a></div>
 				</div>
 
 				<div class="form-elem">
-					<label for="pin2">PIN SIM-Karte 2:</label>
-					<input type="text" id="pin2" placeholder="" size="8" pattern="[0-9]{4,8}">,
-					<label for="puk2">PUK SIM-Karte 2:</label>
+					<span class="label">SIM-Karte 2</span> –
+					<label class="sub" for="pin2original">PIN Original:</label>
+					<input type="text" id="pin2original" placeholder="" size="8" pattern="[0-9]{4,8}">
+					<label class="sub" for="pin2">PIN:</label>
+					<input type="text" id="pin2" placeholder="" size="8" pattern="[0-9]{4,8}"><br>
+					<label class="sub" for="puk2">PUK:</label>
 					<input type="text" id="puk2" placeholder="" size="12" pattern="[0-9]*">
+					<label class="sub" for="simno2">Kartennummer:</label>
+					<input type="text" id="simno2" placeholder="" size="16" pattern="[0-9]+">
 				</div>
 
 
+				<div class="page-break"></div>
 				<h2>Konfiguration</h2>
+
+
+				<div class="form-elem">
+					<label for="lockcode">Entsperrcode:</label>
+					<input type="text" id="lockcode" value="" size="10">
+					<div class="explanation">Ratsam ist ein Zahlencode mit mindestens fünf Stellen. Konfigurierbar unter "Einstellungen", "Sicherheit".</div>
+				</div>
+
 
 				<div class="form-elem">
 					<input type="checkbox" id="photo-backup" value="photo-backup">
-					<label for="photo-backup">automatisches Foto-Backup</label>
+					<label class="margin" for="photo-backup">automatisches Foto-Backup</label>
+					<label for="photo-backup-service">Dienst:</label>
+					<input type="text" id="photo-backup-service" placeholder="" size="20">
 					<div class="explanation">Aufgenommene Bilder müssen spätestens bei der nächsten WLAN-Verbindung online gebackuppt werden. Möglichkeiten: Amazon Prime Photos, Google Photos, Dropbox, Nextcloud/OwnCloud.</div>
 				</div>
 
 				<div class="form-elem">
 					<input type="checkbox" id="emails-imap" value="emails-imap">
-					<label for="emails-imap">E-Mails über IMAP</label>
-					<div class="explanation">E-Mails müssen über IMAP empfangen werden.</div>
+					<label class="margin" for="emails-imap">E-Mails über IMAP</label>
+					<label for="email-account">Hauptkonto:</label>
+					<input type="text" id="email-account" placeholder="" size="20">
+					<div class="explanation">E-Mails müssen über IMAP empfangen werden. Google Mail nutzt immer IMAP, bei GMX und Web.de ist das auch bei Free-Konten möglich.</div>
 				</div>
 
 				<div class="form-elem">
 					<input type="checkbox" id="threema-id" value="threema-id">
-					<label for="threema-id">Threema-ID</label>,
+					<label class="margin" for="threema-id">Threema-ID</label>
 					<label for="threema-pass">Passwort:</label>
 					<input type="text" id="threema-pass" placeholder="" size="15">
-					<div class="explanation">Die Threema-ID muss außerhalb des Geräts gespeichert werden, am besten per E-Mail (auch an den besten Freund/Freundin) verschickt. Passwort hier notieren.</div>
+					<div class="explanation">Die Threema-ID muss außerhalb des Geräts gespeichert werden, am besten ausdrucken und per E-Mail (auch an den besten Freund/Freundin) verschickt. Passwort hier notieren.</div>
 				</div>
 
 				<div class="form-elem">
 					<input type="checkbox" id="whatsapp" value="whatsapp">
-					<label for="whatsapp">automatisches Backup Whatsapp</label>
-					<div class="explanation">Whatsapp kann seine Daten regelmäßig in Google Drive speichern. Dieses Feature sollte aktiviert werden.</div>
+					<label for="whatsapp">automatisches Backup WhatsApp</label>
+					<div class="explanation">WhatsApp kann seine Daten regelmäßig in Google Drive speichern. Dieses Feature sollte aktiviert werden.</div>
 				</div>
 
 				<div class="form-elem">
@@ -174,19 +213,40 @@
 				</div>
 
 
+				<div class="form-elem">
+					<input type="checkbox" id="encryption" value="encryption">
+					<label for="encryption">Verschlüsselung aktivieren</label>
+					<div class="explanation">"Einstellungen", "Sicherheit", "Verschlüsselung", "Smartphone verschlüsseln".</div>
+				</div>
+
+
+				<div class="form-elem">
+					<input type="checkbox" id="2fa" value="2fa">
+					<label for="2fa">2-Faktor-Authentification aktivieren, wo möglich</label>
+					<div class="explanation">Am besten mit der App "Google Authentificator". Die Einstellungen in den Online-Diensten sind individuell verschieden.</div>
+				</div>
+
+
+
+
+
 				<h2>Synchronisation</h2>
 
-				E-Mails
-				Kontakte
-
+				<div class="form-elem">
+					<input type="checkbox" id="sync-contacts" value="sync-contacts">
+					<label class="margin" for="sync-contacts">Kontakte</label>
+					<label for="sync-contact-service">Dienst:</label>
+					<input type="text" id="sync-contact-service" placeholder="" size="15">
+					<div class="explanation">Kontakte sollten nicht mehrfach erfasst, sondern zentral vorgehalten werden.</div>
+				</div>
 
 
 				<h2>Software</h2>
 
 				<div class="form-elem">
 					<input type="checkbox" id="gerätemanager" value="gerätemanager">
-					<label for="gerätemanager">Gerätemanager (auch konfiguriert für Fernlöschung)</label>
-					<div class="explanation">Mit dem Gerätemanager kann das Gerät klingen, auch wenn es leise gestellt ist. Außerdem kann im Verlust-Fall das Handy ferngelöscht werden (muss vorher konfiguriert werden!).</div>
+					<label for="gerätemanager">Android Geräte-Manager (auch konfiguriert für Fernlöschung)</label>
+					<div class="explanation">Mit dem Geräte-Manager kann das Gerät klingen, auch wenn es leise gestellt ist. Außerdem kann im Verlust-Fall das Handy ferngelöscht werden (muss vorher konfiguriert werden über "Sperren und löschen aktivieren"!).</div>
 				</div>
 
 				<div class="form-elem">
@@ -195,21 +255,45 @@
 					<div class="explanation">Chrome muss installiert sein (manuell im PlayStore gewählt), zusätzlich Firefox, Opera (gut bei schlechter Datenverbindung) o.ä.</div>
 				</div>
 
+				<div class="form-elem">
+					<input type="checkbox" id="maps" value="maps">
+					<label for="maps">Offline-Karten</label>
+					<div class="explanation">OpenStreetMap-Material gibt es z.B. bei OSMand. Kostenlose Europa-Karten gibt es bei Here We Go. Alternativ Karte der Heimatregion in Google Maps herunterladen. Daten wenn möglich auf SD-Karte speichern.</div>
+				</div>
 
-				Verschlüsselung aktivieren
 
-				Passwort-Management (Facebook, GMail usw.)
+				<div class="form-elem">
+					<input type="checkbox" id="pass-management" value="pass-management">
+					<label class="margin" for="pass-management">Passwort-Management (Facebook, GMail usw.)</label>
+					<label for="pass-service">Technik:</label>
+					<input type="text" id="pass-service" placeholder="" size="15">
+					<div class="explanation">Passwörter müssen technisch verwaltet werden. Papier zählt als Technik, Alternativen wären KeepassDroid, 1Password und weitere.</div>
+				</div>
+
 
 
 				<h2>Service-Termine</h2>
 
-				Update Android, Play-Store-Updates, Backup Threema Daten
-
-				Datum, Arbeiten, nächster Termin
-
-
-			</form>
+				<table id="service">
+					<thead>
+						<tr><th></th><th>Datum</th><th>Systemupdate</th><th>PlayStore-Updates</th><th>Backup Threema Daten</th><th>Updates Karten</th><th>Sonstiges</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>1.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>2.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>3.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>4.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>5.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>6.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>7.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>8.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>9.</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+					</tbody>
+				</table>
 			</main>
+			</form>
+
+			<hr>
 			<footer>Eigenes Serviceheft kostenlos? <a href="https://jojomi.github.io/serviceheft" target="_blank">https://jojomi.github.io/serviceheft</a></footer>
 		</div>
 	</body>
